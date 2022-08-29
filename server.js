@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
 
-//Session
 // Sessions
 app.use(
     session({
