@@ -37,7 +37,7 @@ app.use(
 
 app.use(flash())
   
-// app.use('/', mainRoutes)
+app.use('/', mainRoutes)
 
 //Start Server
 app.listen(process.env.PORT, ()=>{
