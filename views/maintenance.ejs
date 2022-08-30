@@ -7,6 +7,18 @@
     <title>Maintenance</title>
 </head>
 <body>
-    
+    <h1>Maintenance Schedule</h1>
+    <section>
+        <% items.forEach(elem => { %>
+            <div data-id="<%elem._id%>">
+                <h3><%=elem.serviceType %></h3>
+                <h4><%=elem.datePerformed %></h4>
+                <p><%=elem.location %></p>
+                <p><%=elem.nextDate %></p>
+                <h4><%=elem.status %></h4>
+            </div>
+
+        <% }) %>
+    </section>
 </body>
 </html>
