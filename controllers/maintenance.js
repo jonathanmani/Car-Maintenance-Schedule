@@ -1,7 +1,32 @@
-const maintenanceItem = require("../models/maintenance");
+const Maintenance = require("../models/maintenance");
 
 module.exports = {
-  getMaintenanceItems: async (req, res) => {
+  getMaintenance: async (req, res) => {
     console.log(req.user);
+    try {
+      const maintenanceItems = await Maintenance.find({ userId: req.user.id });
+      res.render("maintenance.ejs", {
+        items: maintenanceItems,
+        user: req.user,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  createMaintenance: async (req, res) => {
+    try {
+      await Maintenance.create({
+        serviceType: req.body.serviceType,
+        datePerformed: req.body.datePerformed,
+        location: req.body.location,
+        nextDate: req.body,
+        status: req.body.status,
+        userId: req.user.id,
+      });
+      console.log("Maintenance Item Created");
+      res.redirect("/maintenance");
+    } catch (err) {
+      console.error(err);
+    }
   },
 };

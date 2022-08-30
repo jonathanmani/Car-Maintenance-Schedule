@@ -10,16 +10,19 @@ const MaintenanceSchema = new mongoose.Schema({
     default: Date.now(),
   },
   location: {
-    name: String,
-    address: String,
-    postalCode: String,
-    city: String,
-    province: String,
-    country: String,
+    type: Object,
   },
   nextMaintenanceDate: {
     type: Date,
     default: Date.now(),
+  },
+  status: {
+    type: String,
+    required: true,
+  },
+  userId: {
+    type: String,
+    required: true,
   },
 });
 
