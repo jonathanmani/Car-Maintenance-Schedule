@@ -1,3 +1,7 @@
 const maintenanceItem = require("../models/maintenance");
 
-module.exports = {};
+module.exports = {
+  getMaintenanceItems: async (req, res) => {
+    console.log(req.user);
+  },
+};
