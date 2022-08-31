@@ -8,13 +8,12 @@ const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
-const carRoutes = require("./routes/maintenance");
+const maintenanceRoutes = require("./routes/maintenance");
 
 require("dotenv").config({ path: "./config/.env" });
 
 //Passport Config
-//
-//
+require("./config/passport")(passport);
 
 connectDB();
 
@@ -36,6 +35,10 @@ app.use(
     }),
   })
 );
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(flash());
 
